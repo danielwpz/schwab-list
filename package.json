@@ -1,0 +1,19 @@
+{
+  "name": "parse-schwab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Wang",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "cheerio": "^1.0.0-rc.2",
+    "lodash": "^4.17.5",
+    "phantom": "^4.0.12",
+    "utf8": "^3.0.0",
+    "walk": "^2.3.13"
+  }
+}
