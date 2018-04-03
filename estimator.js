@@ -1,8 +1,10 @@
 'use strict';
 
+const average = require('average');
+
 class Estimator {
-  constructor(list, m) {
-    this.m = m;
+  constructor(list) {
+    this.m = average(list.map(ratings => ratings.filter(x => x > 0).length));
 
     let sum = 0;
     let n = 0;

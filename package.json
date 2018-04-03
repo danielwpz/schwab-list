@@ -9,6 +9,7 @@
   "author": "Daniel Wang",
   "license": "MIT",
   "dependencies": {
+    "average": "^0.1.0",
     "bluebird": "^3.5.1",
     "cheerio": "^1.0.0-rc.2",
     "lodash": "^4.17.5",

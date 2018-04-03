@@ -31,7 +31,7 @@ function getRatingList(html) {
     const symbol = $('td.Symbol a', row).text();
     const name = $('td.CompanyName', row).text();
     const ratings = ratingCompanyList.map(company => {
-      return 20 * parseInt($(`td.${company}`, row).attr('tsraw'));
+      return parseInt($(`td.${company}`, row).attr('tsraw'));
     });
     return {
       symbol,
@@ -46,12 +46,11 @@ function getRatingList(html) {
 }
 
 function getScore(ratingList) {
-  const minVote = 2;
   const ratings = _.map(ratingList, 'ratings');
-  const estimator = new Estimator(ratings, minVote);
+  const estimator = new Estimator(ratings);
 
   return ratingList.map(r => {
-    r.score = estimator.calculate(r.ratings);
+    r.score = 20 * estimator.calculate(r.ratings);
     return r;
   });
 }
