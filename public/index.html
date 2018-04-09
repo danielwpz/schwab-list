@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Scores</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+</head>
+<body>
+    <script src="scripts/app.js"></script>
+    <div id="app">
+        <h1>Schwab Scores</h1>
+
+        <!-- common picked -->
+
+        <h2>Most Commonly-picked Stocks</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Occurrence</th>
+                <th>Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(stock, index) in common_list">
+                <td>{{ index + 1 }}</td>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.name }}</td>
+                <td>
+                    <span v-for="date in stock.occurrence" class="badge badge-dark" style="margin-right: 5px">
+                        {{ date }}
+                    </span>
+                </td>
+                <td>{{ stock.score >= 0 ? stock.score.toFixed(2) : 'NA' }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- All scores -->
+        <h2>Latest Score</h2>
+        <h4>{{ latest_score_date }}</h4>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td>#</td>
+                <td>Symbol</td>
+                <td>Name</td>
+                <td>Score</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr v-for="(stock, index) in latest_score">
+                <td>{{ index + 1 }}</td>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.score >= 0 ? stock.score.toFixed(2) : 'NA' }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
