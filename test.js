@@ -1,5 +1,5 @@
 'use strict';
 
-const parser = require('./data_source.js');
+const parser = require('./lib/data_source.js');
 
 parser.getSchwabScores().then(console.log);
