@@ -42,27 +42,32 @@
         </table>
 
         <!-- All scores -->
-        <h2>Latest Score</h2>
-        <h4>{{ latest_score_date }}</h4>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <td>#</td>
-                <td>Symbol</td>
-                <td>Name</td>
-                <td>Score</td>
-            </tr>
-            </thead>
+        <h2>Scores</h2>
+        <details v-for="(list, date) in scores">
+            <summary style="font-size: large">
+                {{ date }}
+            </summary>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+                </thead>
 
-            <tbody>
-            <tr v-for="(stock, index) in latest_score">
-                <td>{{ index + 1 }}</td>
-                <td>{{ stock.symbol }}</td>
-                <td>{{ stock.name }}</td>
-                <td>{{ stock.score >= 0 ? stock.score.toFixed(2) : 'NA' }}</td>
-            </tr>
-            </tbody>
-        </table>
+                <tbody>
+                <tr v-for="(stock, index) in list">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ stock.symbol }}</td>
+                    <td>{{ stock.name }}</td>
+                    <td>{{ stock.score >= 0 ? stock.score.toFixed(2) : 'NA' }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </details>
+
     </div>
 </body>
 </html>

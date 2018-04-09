@@ -7,18 +7,14 @@ window.onload = function () {
     el: '#app',
     data: {
       common_list: [],
-      latest_score: [],
-      latest_score_date: ''
+      scores: []
     },
     mounted() {
       axios.get('/api/most_common').then(res => {
         app.common_list = res.data;
       });
       axios.get('/api/lists').then(res => {
-        const result = res.data;
-        const dates = Object.keys(result).sort().reverse();
-        app.latest_score_date = dates[0];
-        app.latest_score = result[dates[0]];
+        app.scores = res.data;
       })
     }
   });
