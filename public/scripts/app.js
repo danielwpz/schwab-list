@@ -10,13 +10,17 @@ window.onload = function () {
       scores: []
     },
     mounted() {
-      axios.get('/api/most_common').then(res => {
-        app.common_list = res.data;
-      });
+      axios.get('/api/most_common')
+        .then(res => {
+          app.common_list = res.data;
+        })
+        .then(() => $('#score_table').DataTable());
+
       axios.get('/api/lists').then(res => {
         app.scores = res.data;
-      })
+      });
     }
   });
+
 };
 

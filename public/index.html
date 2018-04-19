@@ -6,8 +6,11 @@
     <link rel="icon" href="images/icon.jpg"/>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
 </head>
 <body>
     <script src="scripts/app.js"></script>
@@ -17,7 +20,7 @@
         <!-- common picked -->
 
         <h2>Most Commonly-picked Stocks</h2>
-        <table class="table table-striped">
+        <table id="score_table" class="table table-striped">
             <thead>
             <tr>
                 <th>#</th>
@@ -37,7 +40,7 @@
                         {{ date }}
                     </span>
                 </td>
-                <td>{{ stock.score >= 0 ? stock.score.toFixed(2) : 'NA' }}</td>
+                <td>{{ stock.score >= 0 ? stock.score.toFixed(2) : undefined }}</td>
             </tr>
             </tbody>
         </table>
@@ -63,7 +66,7 @@
                     <td>{{ index + 1 }}</td>
                     <td>{{ stock.symbol }}</td>
                     <td>{{ stock.name }}</td>
-                    <td>{{ stock.score >= 0 ? stock.score.toFixed(2) : 'NA' }}</td>
+                    <td>{{ stock.score >= 0 ? stock.score.toFixed(2) : undefined }}</td>
                 </tr>
                 </tbody>
             </table>
