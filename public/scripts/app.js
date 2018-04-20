@@ -19,8 +19,25 @@ window.onload = function () {
       axios.get('/api/lists').then(res => {
         app.scores = res.data;
       });
+    },
+    methods: {
+      priceChangePercent
     }
   });
 
 };
 
+function priceChangePercent(historical, key) {
+  if (!historical) {
+    return undefined;
+  }
+
+  const newString = historical.now.close_price;
+  const baseString = historical[key].close_price;
+
+  const newValue = parseFloat(newString);
+  const baseValue = parseFloat(baseString);
+  const delta = (newValue - baseValue) / baseValue;
+
+  return (delta * 100).toFixed(1) + '%';
+}

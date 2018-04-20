@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
 </head>
 <body>
+    <style>
+        .positive {color: green}
+        .negative {color: red}
+    </style>
+
     <script src="scripts/app.js"></script>
     <div id="app">
         <h1>Schwab Scores</h1>
@@ -28,6 +33,12 @@
                 <th>Name</th>
                 <th>Occurrence</th>
                 <th>Score</th>
+                <th>Price</th>
+                <th>1W</th>
+                <th>1M</th>
+                <th>3M</th>
+                <th>6M</th>
+                <th>1Y</th>
             </tr>
             </thead>
             <tbody>
@@ -41,6 +52,12 @@
                     </span>
                 </td>
                 <td>{{ stock.score >= 0 ? stock.score.toFixed(2) : undefined }}</td>
+                <td>{{ stock.historical ? parseFloat(stock.historical.now.close_price).toFixed(2) : undefined }}</td>
+                <td v-bind:class="{ positive: priceChangePercent(stock.historical, 'one_week') > '0', negative: priceChangePercent(stock.historical, 'one_week') < '0' }">{{ priceChangePercent(stock.historical, 'one_week') }}</td>
+                <td v-bind:class="{ positive: priceChangePercent(stock.historical, 'one_month') > '0', negative: priceChangePercent(stock.historical, 'one_month') < '0' }">{{ priceChangePercent(stock.historical, 'one_month') }}</td>
+                <td v-bind:class="{ positive: priceChangePercent(stock.historical, 'three_month') > '0', negative: priceChangePercent(stock.historical, 'three_month') < '0' }">{{ priceChangePercent(stock.historical, 'three_month') }}</td>
+                <td v-bind:class="{ positive: priceChangePercent(stock.historical, 'six_month') > '0', negative: priceChangePercent(stock.historical, 'six_month') < '0' }">{{ priceChangePercent(stock.historical, 'six_month') }}</td>
+                <td v-bind:class="{ positive: priceChangePercent(stock.historical, 'one_year') > '0', negative: priceChangePercent(stock.historical, 'one_year') < '0' }">{{ priceChangePercent(stock.historical, 'one_year') }}</td>
             </tr>
             </tbody>
         </table>
