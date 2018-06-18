@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node api.js",
-    "open": "concurrently \"node api.js\" \"sleep 1 && open http://localhost:3300\"",
+    "open": "concurrently \"npm run start\" \"sleep 1 && open http://localhost:3300\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Daniel Wang",
