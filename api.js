@@ -28,6 +28,8 @@ app.get('/status/health', (req, res) => {
   });
 });
 
-app.listen(3300, () => {
-  console.log('Listening at', 3300);
+const port = process.env.PORT || 3300;
+
+app.listen(port, () => {
+  console.log('Listening at', port);
 });
