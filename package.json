@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "8"
+  },
   "scripts": {
     "start": "node api.js",
     "open": "concurrently \"npm run start\" \"sleep 1 && open http://localhost:3300\"",
